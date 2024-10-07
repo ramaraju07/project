@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Feedback Login</title>
+    <title>Sign Up</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
             font-family: 'Arial', sans-serif;
             display: flex;
@@ -18,301 +18,92 @@
             align-items: center;
             height: 100vh;
             background-color: #f4f4f4;
-            position: relative;
         }
 
         .container {
-            width: 80%;
-            max-width: 1200px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: relative;
-        }
-
-        /* Positioning logo at top-left */
-        .logo {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            text-align: left;
-        }
-
-        .logo img {
-            width: 150px; /* Adjust the width of the logo */
-        }
-
-        .content-box {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-            padding: 40px 20px;
+            width: 90%;
+            max-width: 400px;
             background-color: white;
             border-radius: 10px;
             box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+            padding: 20px;
         }
 
-        .logo h1 {
-            font-size: 36px;
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
             color: #3b6fc4;
-            display: inline-block;
         }
 
-        .enroll-btn {
-            background-color: #d3d3d3;
-            border: none;
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-            margin-left: 75px; 
-            border-radius: 4px;
-            display: inline-block;
-            position: relative; /* To position dropdown */
-        }
-
-        .options {
-            display: none;
-            position: absolute;
-            bottom: 300px; /* Adjust as necessary */
-            left: 500px;
-            background-color: rgba(220, 220, 220, 0.9);
-            border-radius: 5px;
-            padding: 10px;
-            z-index: 100;
-        }
-
-        .options button {
-            display: block;
-            margin: 5px 0;
-            padding: 10px 20px;
-            border: none;
-            background-color: #e0e9fa;
-            cursor: pointer;
-            font-size: 16px;
-            border-radius: 4px;
-            width: 100px;
-        }
-
-        .options button:hover {
-            background-color: #bed3f7;
-        }
-
-        .login-box {
-            text-align: center;
-            width: 300px;
-        }
-
-        .login-box h2 {
-            font-size: 32px;
-            color: #000;
-        }
-
-        .login-box h3 {
-            font-size: 22px;
-            margin-bottom: 20px;
-        }
-
-        .btn-group {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 20px;
-        }
-
-        .login-btn {
-            padding: 10px 20px;
-            background-color: #e0e9fa;
-            border: 1px solid #d1d9e9;
-            border-radius: 5px;
-            font-size: 16px;
-            cursor: pointer;
-            margin-right: 15px;
-            flex: 1;
-            max-width: 150px;
-            text-align: center;
-        }
-
-        .login-btn.active {
-            background-color: #bed3f7;
-        }
-
-        .login-btn:last-child {
-            margin-right: 0;
-        }
-
-        .checkbox {
-            margin-bottom: 15px;
-            text-align: left;
-            padding:5px;
-        }
-
-        .submit-btn {
-            background-color: #e0e9fa;
-            border: none;
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-            width: 100%;
-            border-radius: 4px;
-            margin-bottom: 15px;
-        }
-
-        .forgot-pass {
-            color: green;
-            font-size: 14px;
-            text-decoration: none;
-        }
-
-        .forgot-pass:hover {
-            text-decoration: underline;
-        }
-
-        .image img {
-            width: 400px;
-            height: auto;
-        }
-        
         .input-group {
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
         .input-group input {
             width: 100%;
-            padding: 12px 15px;
+            padding: 10px;
             border: 1px solid #d1d1d1;
-            border-radius: 4px;
+            border-radius: 5px;
             font-size: 16px;
-            transition: border-color 0.3s;
-            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
         }
-        
-        .btabc {
-            background-color: #e0e9fa;
+
+        .submit-btn {
+            width: 100%;
+            padding: 10px;
+            background-color: #3b6fc4;
+            color: white;
             border: none;
-            padding: 10px 20px;
+            border-radius: 5px;
             font-size: 16px;
             cursor: pointer;
-            width: 100%;
-            border-radius: 4px;
-            margin-bottom: 15px;
         }
 
-        .input-group input:focus {
-            border-color: #3b6fc4;
-            outline: none;
+        .submit-btn:hover {
+            background-color: #2e5a9b;
         }
 
-        @media (max-width: 768px) {
-            .content-box {
-                flex-direction: column;
-                padding: 20px;
-            }
+        .redirect {
+            text-align: center;
+            margin-top: 15px;
+        }
 
-            .image img {
-                width: 100%;
-                height: auto;
-            }
+        .redirect a {
+            color: #3b6fc4;
+            text-decoration: none;
+        }
+
+        .redirect a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
-
     <div class="container">
-        <!-- Logo in the top-left corner -->
-        <div class="logo">
-            <!-- <img src="path-to-your-logo.png" alt="Feedback Logo"> -->
-        </div>
-
-        <!-- Main Content Box with Login form and image -->
-        <div class="content-box">
-            <div class="login-box">
-                <h2>WELCOME TO </h2>
-                <h3>RateMyClass</h3>
-
-                <div class="icon-set">
-                    <!-- First Checkbox -->
-                    <label for="option1">
-                        <input type="checkbox" id="option1" name="option1" value="Option1" onchange="toggleFeedbackForm()">
-                        STUDENT
-                    </label>
-            
-                    <!-- Second Checkbox -->
-                    <label for="option2">
-                        <input type="checkbox" id="option2" name="option2" value="Option2" onchange="toggleFeedbackForm()">
-                        FACULTY
-                    </label>
-                </div>
-
-                <form id="loginForm">
-                    <div class="input-group">
-                        <input type="text" placeholder="Enter email" required>
-                    </div>
-                    <div class="input-group">
-                        <input type="text" placeholder="Enter id" required>
-                    </div>
-                    <div class="input-group">
-                        <input type="password" placeholder="Enter password" required>
-                    </div>
-                    
-                    <div class="checkbox">
-                        <input type="checkbox" id="remember">
-                        <label for="remember">Remember me</label>
-                    </div>
-                    <button type="submit" class="btabc">Sign up</button>
-                </form>
-
-                <!-- Enroll Button and Dropdown -->
-                <div style="display: flex; align-items: center; margin-top: 20px;">
-                    <button class="enroll-btn">Enroll Now</button>
-                    <div class="options">
-                        <button class="log-in" id="login">Login</button>
-                        <button class="sign-up" id="signup">Sign up</button>
-                    </div>
-                </div>
+        <h2>Sign Up</h2>
+        <form id="signupForm">
+            <div class="input-group">
+                <input type="text" placeholder="Enter your name" required>
             </div>
-
-            <div class="image">
-                <img src="https://i.postimg.cc/fWG3SH95/FACULTY.png" alt="Faculty Image">
+            <div class="input-group">
+                <input type="email" placeholder="Enter your email" required>
             </div>
+            <div class="input-group">
+                <input type="password" placeholder="Create a password" required>
+            </div>
+            <button class="submit-btn" type="submit">Sign Up</button>
+        </form>
+        <div class="redirect">
+            <p>Already have an account? <a href="/enroll.html">Login here</a></p>
         </div>
     </div>
 
     <script>
-        // To handle hover on enroll button
-        const enrollBtn = document.querySelector('.enroll-btn');
-        const options = document.querySelector('.options');
-
-        // Show options on hover
-        enrollBtn.addEventListener('mouseenter', () => {
-            options.style.display = 'block';
-        });
-
-        // Hide options when mouse leaves the button
-        enrollBtn.addEventListener('mouseleave', () => {
-            setTimeout(() => {
-                if (!options.matches(':hover')) {
-                    options.style.display = 'none';
-                }
-            }, 200); // Added slight delay for interaction
-        });
-
-        // Redirect to enroll.html on signup
-        const signup = document.getElementById('signup');
-        signup.addEventListener('click', function() {
-            window.location.href = '/signup.html';
-        });
-
-        // Redirect to enroll.html on login
-        const login = document.getElementById('login');
-        login.addEventListener('click', function() {
-            window.location.href = '/enroll.html';
-        });
-
-        // Redirect to enroll.html on form submission
-        const loginForm = document.getElementById('loginForm');
-        loginForm.addEventListener('submit', function(event) {
-            event.preventDefault();
-            window.location.href = '/enroll.html';
+        // Redirect to homepage after form submission
+        const signupForm = document.getElementById('signupForm');
+        signupForm.addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent default form submission
+            alert("Sign Up Successful!"); // Simulate sign-up success
+            window.location.href = '/enroll.html'; // Redirect to login page
         });
     </script>
 </body>
