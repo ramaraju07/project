@@ -301,20 +301,20 @@
         // Redirect to enroll.html on signup
         const signup = document.getElementById('signup');
         signup.addEventListener('click', function() {
-            window.location.href = '/signup.html';
+            window.location.href = '/pages/signup.html';
         });
 
         // Redirect to enroll.html on login
         const login = document.getElementById('login');
         login.addEventListener('click', function() {
-            window.location.href = '/enroll.html';
+            window.location.href = '/pages/enroll.html';
         });
 
         // Redirect to enroll.html on form submission
         const loginForm = document.getElementById('loginForm');
         loginForm.addEventListener('submit', function(event) {
             event.preventDefault(); // Prevent default form submission
-            window.location.href = '/enroll.html'; // Redirect on form submit
+            window.location.href = '/pages/enroll.html'; // Redirect on form submit
         });
     </script>
 </body>
