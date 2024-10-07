@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Feedback Dashboard</title>
+    <style>
+        /* General Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            background-color: #f4faff;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            overflow-x: hidden;
+        }
+        h1 {
+            background-color: #c3dbf7;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            font-size: 24px;
+            color: #333;
+        }
+        footer {
+            background-color: #c3dbf7;
+            text-align: center;
+            padding: 20px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Content Wrapper */
+        .content-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-grow: 1;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Feedback Options */
+        .icon-set {
+            display: flex;
+            justify-content: center;
+            gap: 40px; /* Spacing between radio buttons */
+            margin-top: 20px;
+        }
+
+        /* Styling for Radio Buttons */
+        .radio-label {
+            display: flex;
+            align-items: center;
+            background-color: #5da9e9;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .radio-label input {
+            margin-right: 10px; /* Spacing between radio button and label text */
+        }
+
+        .radio-label:hover {
+            background-color: #4698d9;
+        }
+
+        /* Feedback Form */
+        .feedback-form {
+            display: none;
+            margin: 20px;
+            padding: 20px;
+            padding-left: 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            max-width: 800px;
+            width: 1000%;
+            position: relative;
+            max-height: 80vh; /* Limits the form height to 80% of viewport height */
+            overflow-y: auto; /* Makes the form scrollable when content exceeds max-height */
+            margin: 20px;
+            margin-left: 250px;
+            margin-right: 250px;
+            padding: 15px;
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            overflow-y: auto; /* Allow scrolling if content overflows */
+            max-height: calc(100vh - 200px); /* Adjust height based on header and footer */
+        }
+        .feedback-form h2 {
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        .feedback-form label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .question-field,
+        .option-field {
+            margin-bottom: 15px;
+        }
+        
+
+        /* Buttons */
+        .add-feedback-btn,
+        .add-question-btn {
+            background-color: #5da9e9;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            display: block;
+            margin: 20px auto;
+        }
+        .add-feedback-btn:hover,
+        .add-question-btn:hover {
+            background-color: #4698d9;
+        }
+
+        /* Remove Button Styles (Optional: Inherit existing button styles) */
+        .remove-question-btn {
+            background-color: #e05d5d;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 10px;
+        }
+        .remove-question-btn:hover {
+            background-color: #d9534f;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar Section -->
+    <div id="fnavbar"></div>
+
+    <!-- Dashboard Header -->
+    <header>
+        <h1>Student Feedback Dashboard</h1>
+    </header>
+
+    <!-- Feedback Options -->
+    <div class="icon-set">
+        <!-- First Radio Button -->
+        <label for="option1" class="radio-label">
+            <input type="radio" id="option1" name="feedbackType" value="Course" onchange="toggleFeedbackForm()">
+            CREATE FEEDBACK FOR COURSE
+        </label>
+
+        <!-- Second Radio Button -->
+        <label for="option2" class="radio-label">
+            <input type="radio" id="option2" name="feedbackType" value="Faculty" onchange="toggleFeedbackForm()">
+            CREATE FEEDBACK FOR FACULTY
+        </label>
+    </div>
+
+    <!-- Feedback Form -->
+    <div class="feedback-form content-wrapper" id="feedbackForm">
+        <h2>Feedback Form</h2>
+
+        <div id="questionContainer">
+            <!-- Empty container for dynamic question fields -->
+        </div>
+
+        <button class="add-question-btn" onclick="addQuestion()">Add Question</button>
+
+        <button class="add-feedback-btn" onclick="submitFeedback()">Submit Feedback</button>
+    </div>
+
+    <footer>
+        &copy; 2024 Student Feedback System. All rights reserved.
+    </footer>
+
+    <script>
+        // Function to add a question field dynamically
+        function addQuestion() {
+            const questionContainer = document.getElementById("questionContainer");
+
+            const questionDiv = document.createElement("div");
+            questionDiv.classList.add("question-field");
+
+            // Label for the question
+            const label = document.createElement("label");
+            label.innerText = "Enter Question:";
+            questionDiv.appendChild(label);
+
+            // Input for the question text
+            const input = document.createElement("input");
+            input.type = "text";
+            input.name = "questions";
+            input.placeholder = "Type your question here";
+            input.style.width = "100%";
+            input.style.marginBottom = "10px";
+            questionDiv.appendChild(input);
+
+            // Option field for the question
+            const optionDiv = document.createElement("div");
+            optionDiv.classList.add("option-field");
+
+            const optionLabel = document.createElement("label");
+            optionLabel.innerText = "Enter Options (separated by commas):";
+            optionDiv.appendChild(optionLabel);
+
+            const optionInput = document.createElement("input");
+            optionInput.type = "text";
+            optionInput.name = "options";
+            optionInput.placeholder = "Option1, Option2, Option3...";
+            optionInput.style.width = "100%";
+            optionDiv.appendChild(optionInput);
+
+            questionDiv.appendChild(optionDiv);
+
+            // Create and append the Remove button
+            const removeButton = document.createElement("button");
+            removeButton.type = "button"; // Prevent form submission
+            removeButton.innerText = "Remove";
+            removeButton.classList.add("remove-question-btn");
+            removeButton.onclick = function() {
+                questionContainer.removeChild(questionDiv);
+            };
+            questionDiv.appendChild(removeButton);
+
+            // Append the entire questionDiv to the container
+            questionContainer.appendChild(questionDiv);
+        }
+        
+
+        function toggleFeedbackForm() {
+            const courseRadio = document.getElementById("option1");
+            const facultyRadio = document.getElementById("option2");
+
+            // Show or hide the feedback form based on radio button state
+            if (courseRadio.checked || facultyRadio.checked) {
+                document.getElementById("feedbackForm").style.display = "block";
+            } else {
+                document.getElementById("feedbackForm").style.display = "none";
+            }
+        }
+
+        function submitFeedback() {
+            // Here you can add logic to process the feedback
+            alert("Feedback submitted successfully!");
+
+            // Clear the questions after submission
+            document.getElementById("questionContainer").innerHTML = "";
+
+            // Uncheck the radio buttons and hide the form
+            document.getElementById("option1").checked = false;
+            document.getElementById("option2").checked = false;
+            document.getElementById("feedbackForm").style.display = "none";
+        }
+
+        // Function to load the navbar from fnavbar.html
+        function loadNavbar() {
+            fetch("fnavbar.html")
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById("fnavbar").innerHTML = data;
+            })
+            .catch(error => console.error('Error loading the navbar:', error));
+        }
+
+        // Call the function on page load
+        window.onload = loadNavbar;
+    </script>
+</body>
+</html>

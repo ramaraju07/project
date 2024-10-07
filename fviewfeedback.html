@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Feedback Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            background-color: #f4faff;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            overflow: hidden; /* Prevent scrolling beyond visible content */
+        }
+        h1 {
+            background-color: #c3dbf7;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        h1 {
+            font-size: 24px;
+            color: #333;
+        }
+        footer {
+            background-color: #c3dbf7;
+            text-align: center;
+            padding: 20px;
+            position: fixed; /* Keep the footer fixed at the bottom */
+            bottom: 0;
+            width: 100%;
+            box-shadow: 0 -4px 6px rgba(0,0,0,0.1);
+        }
+        .icon-set {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-grow: 1;
+            position: relative;
+            overflow: hidden;
+        }
+        .icon-set div {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+        }
+        .icon-set div img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+        }
+        .search-bar {
+            margin: 20px auto;
+            text-align: center;
+        }
+        .search-bar input {
+            width: 200px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            font-size: 14px;
+        }
+        .feedback-list-container {
+            margin: 20px;
+            margin-left: 250px;
+            margin-right: 250px;
+            padding: 15px;
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            overflow-y: auto; /* Allow scrolling if content overflows */
+            max-height: calc(100vh - 200px); /* Adjust height based on header and footer */
+        }
+        .feedback-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .feedback-item {
+            display: flex;
+            align-items: center;
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s;
+        }
+        .feedback-item:hover {
+            background-color: #f1f1f1; /* Change background on hover */
+        }
+        .profile img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+        }
+        .profile {
+            margin-right: 20px;
+        }
+        .details {
+            flex-grow: 1;
+        }
+        .details span {
+            display: block;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+        .details .name {
+            font-weight: bold;
+            color: #333; /* Darker color for the name */
+        }
+        .add-feedback-btn {
+            background-color: #5da9e9;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .add-feedback-btn:hover {
+            background-color: #4698d9;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar Section -->
+    <div id="fnavbar"></div>
+
+    <!-- Dashboard Header -->
+    <header>
+        <h1>Welcome to Student Dashboard</h1>
+    </header>
+    
+    <!-- Main Content -->
+    <div class="content-wrapper">
+        <div class="search-bar">
+            <input type="text" placeholder="Search by id">
+        </div>
+        
+        <!-- Feedback List Container -->
+        <div class="feedback-list-container">
+            <div class="feedback-list">
+                <!-- Feedback 1 -->
+                <div class="feedback-item">
+                    <div class="profile">
+                        <img src="https://i.postimg.cc/RC8Xd8rj/S3.jpg" alt="Avatar">
+
+                    </div>
+                    <div class="details">
+                        <span class="id">3298</span>
+                        <span class="name">D.Goldy</span>
+                        <span class="position">8th class</span>
+                    </div>
+                    <button class="add-feedback-btn" onclick="redirectToFeedbackPage()">View Feedback</button>
+                </div>
+    
+                <!-- Feedback 2 -->
+                <div class="feedback-item">
+                    <div class="profile">
+                        <img src="https://i.postimg.cc/yW4xxBJq/S1.jpg" alt="Avatar">
+
+                    </div>
+                    <div class="details">
+                        <span class="id">9980</span>
+                        <span class="name">D. Ramu</span>
+                        <span class="position">10th class</span>
+                    </div>
+                    <button class="add-feedback-btn" onclick="redirectToFeedbackPage()">View Feedback</button>
+                </div>
+    
+                <!-- Feedback 3 -->
+                <div class="feedback-item">
+                    <div class="profile">
+                        <img src="https://i.postimg.cc/N0jQDLmG/S2.png" alt="Avatar">
+                    </div>
+                    <div class="details">
+                        <span class="id">5488</span>
+                        <span class="name">N. Abhi</span>
+                        <span class="position">8th class</span>
+                    </div>
+                    <button class="add-feedback-btn" onclick="redirectToFeedbackPage()">View Feedback</button>
+                </div>
+    
+                <!-- Feedback 4 -->
+                <div class="feedback-item">
+                    <div class="profile">
+                        <img src="https://i.postimg.cc/J0M8ynrW/S5.webp" alt="Avatar">
+                    </div>
+                    <div class="details">
+                        <span class="id">5488</span>
+                        <span class="name">D. Prashanthi</span>
+                        <span class="position">8th class</span>
+                    </div>
+                    <button class="add-feedback-btn" onclick="redirectToFeedbackPage()">View Feedback</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+        © 2024 Student Feedback System
+    </footer>
+
+    <script>
+        // Function to load the navbar from navbar.html
+        function loadNavbar() {
+            fetch("fnavbar.html") // Ensure the correct file name is used here
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById("fnavbar").innerHTML = data; // Load navbar into the div
+            })
+            .catch(error => console.error('Error loading the navbar:', error));
+        }
+
+        // Call the function on page load
+        window.onload = loadNavbar;
+
+        // Function to redirect to the Add Feedback page
+        function redirectToFeedbackPage() {
+            window.location.href = "fviewfeedback2.html"; // Adjust the URL as needed
+        }
+    </script>
+
+</body>
+</html>

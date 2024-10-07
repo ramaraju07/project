@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Profile</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+            position: relative;
+        }
+
+        .container {
+            width: 80%;
+            max-width: 1200px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+
+        .content-box {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            padding: 40px 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .profile-box {
+            text-align: center;
+            width: 300px;
+        }
+
+        .profile-box h2 {
+            font-size: 32px;
+            color: #000;
+            margin-bottom: 20px;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .input-group label {
+            font-size: 16px;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #d1d1d1;
+            border-radius: 4px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .input-group input:focus {
+            border-color: #3b6fc4;
+            outline: none;
+        }
+
+        .submit-btn {
+            background-color: #e0e9fa;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            width: 100%;
+            border-radius: 4px;
+            margin-bottom: 15px;
+        }
+
+        .cancel-btn {
+            background-color: #d3d3d3;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            width: 100%;
+            border-radius: 4px;
+        }
+
+        .image img {
+            width: 400px;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="content-box">
+            <div class="profile-box">
+                <h2>Edit Profile</h2>
+
+                <form action="#">
+                    <div class="input-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" placeholder="Enter your name" value="John Doe" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" placeholder="Enter your email" value="john.doe@example.com" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="role">Role</label>
+                        <input type="text" id="role" placeholder="Enter your role" value="Student" required>
+                    </div>
+                    <button class="submit-btn" type="button" onclick="window.location.href='profile.html'">Submit</button>
+
+                    <!-- <button class="submit-btn" type="submit">Save Changes</button> -->
+                    <button class="cancel-btn" type="button" onclick="window.location.href='profile.html'">Cancel</button>
+                </form>
+            </div>
+
+            <div class="image">
+                <img src="https://i.postimg.cc/fWG3SH95/FACULTY.png" alt="Faculty Image">
+            </div>
+        </div>
+    </div>
+    
+
+</body>
+</html>

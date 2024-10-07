@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Feedback Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            background-color: #f4faff;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            overflow: hidden; /* Prevent scrolling beyond visible content */
+        }
+        h1 {
+            background-color: #c3dbf7;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            font-size: 24px;
+            color: #333;
+        }
+        footer {
+            background-color: #c3dbf7;
+            text-align: center;
+            padding: 20px;
+            position: fixed; /* Keep the footer fixed at the bottom */
+            bottom: 0;
+            width: 100%;
+            box-shadow: 0 -4px 6px rgba(0,0,0,0.1);
+        }
+        .icon-set {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-grow: 1;
+            position: relative;
+            overflow: hidden;
+        }
+        .search-bar {
+            margin: 20px auto;
+            text-align: center;
+        }
+        .feedback-list-container {
+            margin: 20px;
+            margin-left: 250px;
+            margin-right: 250px;
+            padding: 15px;
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            overflow-y: auto; /* Allow scrolling if content overflows */
+            max-height: calc(100vh - 200px); /* Adjust height based on header and footer */
+        }
+        .feedback-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .feedback-item {
+            display: flex;
+            align-items: center;
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s;
+        }
+        .feedback-item:hover {
+            background-color: #f1f1f1; /* Change background on hover */
+        }
+        .profile img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+        }
+        .profile {
+            margin-right: 20px;
+        }
+        .details {
+            flex-grow: 1;
+        }
+        .details span {
+            display: block;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+        .details .name {
+            font-weight: bold;
+            color: #333; /* Darker color for the name */
+        }
+        .add-feedback-btn {
+            background-color: #5da9e9;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .add-feedback-btn:hover {
+            background-color: #4698d9;
+        }
+        /* Questions section styles */
+        .questions-container {
+            margin: 20px;
+            padding: 15px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .question {
+            margin-bottom: 15px;
+        }
+        .submit-btn {
+            background-color: #5da9e9;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            display: block;
+            margin: 20px auto;
+        }
+        .submit-btn:hover {
+            background-color: #4698d9;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar Section -->
+    <div id="navbar"></div>
+
+    <!-- Dashboard Header -->
+    <header>
+        <h1>Welcome to Student Dashboard</h1>
+    </header>
+    
+    <!-- Main Content -->
+    <div class="content-wrapper">
+        <!-- Feedback List Container -->
+        <div class="feedback-list-container">
+            <div class="feedback-list"></div>
+            <div class="questions-container">
+                <h2>Feedback Questions</h2>
+                <div class="question">
+                    <p>1. How would you rate the course content?</p>
+                    <label>
+                        <input type="radio" name="question1" value="Excellent"> Excellent
+                    </label><br>
+                    <label>
+                        <input type="radio" name="question1" value="Good"> Good
+                    </label><br>
+                    <label>
+                        <input type="radio" name="question1" value="Average"> Average
+                    </label><br>
+                    <label>
+                        <input type="radio" name="question1" value="Poor"> Poor
+                    </label>
+                </div>
+                <div class="question">
+                    <p>2. How would you rate the instructor's teaching ability?</p>
+                    <label>
+                        <input type="radio" name="question2" value="Excellent"> Excellent
+                    </label><br>
+                    <label>
+                        <input type="radio" name="question2" value="Good"> Good
+                    </label><br>
+                    <label>
+                        <input type="radio" name="question2" value="Average"> Average
+                    </label><br>
+                    <label>
+                        <input type="radio" name="question2" value="Poor"> Poor
+                    </label>
+                </div>
+                <div class="question">
+                    <p>3. How likely are you to recommend this course to a friend?</p>
+                    <label>
+                        <input type="radio" name="question3" value="Very Likely"> Very Likely
+                    </label><br>
+                    <label>
+                        <input type="radio" name="question3" value="Likely"> Likely
+                    </label><br>
+                    <label>
+                        <input type="radio" name="question3" value="Unlikely"> Unlikely
+                    </label><br>
+                    <label>
+                        <input type="radio" name="question3" value="Very Unlikely"> Very Unlikely
+                    </label>
+                </div>
+                <div class="question">
+                    <p>4. What do you think about the course duration?</p>
+                    <label>
+                        <input type="radio" name="question4" value="Too Long"> Too Long
+                    </label><br>
+                    <label>
+                        <input type="radio" name="question4" value="Just Right"> Just Right
+                    </label><br>
+                    <label>
+                        <input type="radio" name="question4" value="Too Short"> Too Short
+                    </label><br>
+                    <label>
+                        <input type="radio" name="question4" value="N/A"> N/A
+                    </label>
+                </div>
+                <div class="question">
+                    <p>5. Overall, how satisfied are you with your learning experience?</p>
+                    <label>
+                        <input type="radio" name="question5" value="Very Satisfied"> Very Satisfied
+                    </label><br>
+                    <label>
+                        <input type="radio" name="question5" value="Satisfied"> Satisfied
+                    </label><br>
+                    <label>
+                        <input type="radio" name="question5" value="Dissatisfied"> Dissatisfied
+                    </label><br>
+                    <label>
+                        <input type="radio" name="question5" value="Very Dissatisfied"> Very Dissatisfied
+                    </label>
+                </div>
+            </div>
+            <button class="submit-btn" onclick="submitFeedback()">Submit Feedback</button>
+        </div>
+    </div>
+
+
+    <!-- Footer Section -->
+    <footer>
+        © 2024 Student Feedback System
+    </footer>
+
+    <script>
+        // Function to load the navbar from navbar.html
+        function loadNavbar() {
+            fetch("navbar.html")
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById("navbar").innerHTML = data;
+            })
+            .catch(error => console.error('Error loading the navbar:', error));
+        }
+
+        // Function to redirect to the sAddFeedback2 page
+        function redirectToFeedbackPage() {
+            window.location.href = "sAddFeedback2.html"; // Adjust the URL as needed
+        }
+
+        // Function to handle feedback submission
+        function submitFeedback() {
+            window.location.href = "sAddFeedback.html";
+            alert("Feedback submitted successfully!"); // Replace with actual submission logic
+            // You can also add redirection here if needed, e.g.:
+            // redirectToFeedbackPage();
+        }
+
+        // Call the function on page load
+        window.onload = loadNavbar;
+    </script>
+</body>
+</html>

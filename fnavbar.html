@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navbar</title>
+    <style>
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #d9e6f2;
+            padding: 10px 20px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 999;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        nav .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+        nav a {
+            text-decoration: none;
+            padding: 10px 20px;
+            color: #5b6db3;
+            font-weight: bold;
+            font-size: 16px;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+        }
+        nav a:hover {
+            background-color: #8bb1e7;
+            color: white;
+        }
+        .profile-section {
+            display: flex;
+            align-items: center;
+        }
+        .user-icon img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-links">
+            <a href="/facultyHome.html">HOME</a>
+            <a href="/fcreatefeedback.html">CREATE FEEDBACK</a>
+            <a href="/fviewfeedback.html">VIEW FEEDBACK</a>
+            <a href="/ftimetable.html">TIME TABLE</a>
+            <a href="/faboutus.html">ABOUT US</a>
+            <a href="/enroll.html">LOG OUT</a>
+        </div>
+        <div class="profile-section">
+            <span class="user-icon">
+                <img src="https://i.postimg.cc/BnqL9Zjf/av-2.jpg" alt="Profile Image">
+            </span>
+            <a href="/profile.html">PROFILE</a>
+        </div>
+    </nav>
+</body>
+</html>
