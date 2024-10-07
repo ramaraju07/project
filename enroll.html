@@ -18,87 +18,26 @@
             align-items: center;
             height: 100vh;
             background-color: #f4f4f4;
-            position: relative;
         }
 
         .container {
-            width: 80%;
-            max-width: 1200px;
+            width: 90%;
+            max-width: 800px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            position: relative;
-        }
-
-        /* Positioning logo at top-left */
-        .logo {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            text-align: left;
-        }
-
-        .logo img {
-            width: 150px; /* Adjust the width of the logo */
-        }
-
-        .content-box {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-            padding: 40px 20px;
+            padding: 20px;
             background-color: white;
             border-radius: 10px;
             box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
         }
 
-        .logo h1 {
-            font-size: 36px;
-            color: #3b6fc4;
-            display: inline-block;
+        .logo {
+            text-align: left;
         }
 
-        .enroll-btn {
-            background-color: #d3d3d3;
-            border: none;
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-            margin-left: 75px; 
-            bottom:350px;
-            left:350px;
-            /* margin-bottom:200px; */
-            border-radius: 4px;
-            display: inline-block;
-            position: relative; /* To position dropdown */
-        }
-
-        .options {
-            display: none;
-            position: absolute;
-            bottom: 300px; /* Adjust as necessary */
-            left: 500px;
-            background-color: rgba(220, 220, 220, 0.9);
-            border-radius: 5px;
-            padding: 10px;
-            z-index: 100;
-        }
-
-        .options button {
-            display: block;
-            margin: 5px 0;
-            padding: 10px 20px;
-            border: none;
-            background-color: #e0e9fa;
-            cursor: pointer;
-            font-size: 16px;
-            border-radius: 4px;
-            width: 100px;
-        }
-
-        .options button:hover {
-            background-color: #bed3f7;
+        .logo img {
+            width: 150px;
         }
 
         .login-box {
@@ -111,52 +50,30 @@
             color: #000;
         }
 
-        .login-box h3 {
-            font-size: 22px;
+        .input-group {
             margin-bottom: 20px;
         }
 
-        .btn-group {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 20px;
-        }
-
-        .login-btn {
-            padding: 10px 20px;
-            background-color: #e0e9fa;
-            border: 1px solid #d1d9e9;
+        .input-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #d1d1d1;
             border-radius: 5px;
-            font-size: 16px;
-            cursor: pointer;
-            margin-right: 15px;
-            flex: 1;
-            max-width: 150px;
-            text-align: center;
-        }
-
-        .login-btn.active {
-            background-color: #bed3f7;
-        }
-
-        .login-btn:last-child {
-            margin-right: 0;
-        }
-
-        .checkbox {
-            margin-bottom: 15px;
-            text-align: left;
         }
 
         .submit-btn {
-            background-color: #e0e9fa;
+            background-color: #3b6fc4;
             border: none;
-            padding: 10px 20px;
+            padding: 10px;
+            color: white;
             font-size: 16px;
             cursor: pointer;
+            border-radius: 5px;
             width: 100%;
-            border-radius: 4px;
-            margin-bottom: 15px;
+        }
+
+        .submit-btn:hover {
+            background-color: #2e5a9b;
         }
 
         .forgot-pass {
@@ -168,133 +85,38 @@
         .forgot-pass:hover {
             text-decoration: underline;
         }
-
-        .image img {
-            width: 400px;
-            height: auto;
-        }
-
-        .input-group {
-            margin-bottom: 20px;
-        }
-
-        .input-group input {
-            width: 100%;
-            padding: 12px 15px;
-            border: 1px solid #d1d1d1;
-            border-radius: 4px;
-            font-size: 16px;
-            transition: border-color 0.3s;
-            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-        }
-
-        .input-group input:focus {
-            border-color: #3b6fc4;
-            outline: none;
-        }
     </style>
 </head>
 <body>
-
     <div class="container">
-        <!-- Logo in the top-left corner -->
         <div class="logo">
-            <!-- <img src="https://i.postimg.cc/3RX0Nnb9/feedback-logo.png" alt="Feedback Logo"> -->
+            <img src="https://i.postimg.cc/3RX0Nnb9/feedback-logo.png" alt="Feedback Logo">
         </div>
 
-        <!-- Main Content Box with Login form and image -->
-        <div class="content-box">
-            <div class="login-box">
-                <h2>WELCOME BACK</h2>
-                <h3>Faculty Login</h3>
-
-                <div class="btn-group">
-                    <button class="login-btn active" id="studentLoginBtn">Student Login</button>
-                    <button class="login-btn" id="facultyLoginBtn">Faculty Login</button>
+        <div class="login-box">
+            <h2>WELCOME BACK</h2>
+            <form id="loginForm">
+                <div class="input-group">
+                    <input type="text" placeholder="Enter id" required>
                 </div>
-
-                <form id="loginForm">
-                    <div class="input-group">
-                        <input type="text" placeholder="Enter id" required>
-                    </div>
-                    <div class="input-group">
-                        <input type="password" placeholder="Enter password" required>
-                    </div>
-                    <div class="checkbox">
-                        <input type="checkbox" id="remember">
-                        <label for="remember">Remember me</label>
-                    </div>
-                    <button class="submit-btn" type="submit">Login</button>
-                </form>
-
-                <a href="/forgetpass.html" class="forgot-pass">Forget password?</a>
-
-                <!-- Enroll Button and Dropdown -->
-                <div style="display: flex; align-items: center; margin-top: 20px;">
-                    <button class="enroll-btn">Enroll Now</button>
-                    <div class="options">
-                        <button class="log-in" id="login">Login</button>
-                        <button class="sign-up" id="signup">Sign up</button>
-                    </div>
+                <div class="input-group">
+                    <input type="password" placeholder="Enter password" required>
                 </div>
-            </div>
-
-            <div class="image">
-                <img src="https://i.postimg.cc/fWG3SH95/FACULTY.png" alt="Faculty Image">
+                <button class="submit-btn" type="submit">Login</button>
+            </form>
+            <a href="/forgetpass.html" class="forgot-pass">Forget password?</a>
+            <div class="redirect">
+                <p>Don't have an account? <a href="/index.html">Sign up here</a></p>
             </div>
         </div>
     </div>
 
     <script>
-        // To handle hover on enroll button
-        const enrollBtn = document.querySelector('.enroll-btn');
-        const options = document.querySelector('.options');
-
-        // Show options on hover
-        enrollBtn.addEventListener('mouseenter', () => {
-            options.style.display = 'block';
-        });
-
-        // Hide options when mouse leaves the button
-        enrollBtn.addEventListener('mouseleave', () => {
-            setTimeout(() => {
-                if (!options.matches(':hover')) {
-                    options.style.display = 'none';
-                }
-            }, 100);
-        });
-
-        // Hide options when mouse leaves the options container
-        options.addEventListener('mouseleave', () => {
-            options.style.display = 'none';
-        });
-
-        // Redirect to studentHome.html on student login
-        const studentLoginBtn = document.getElementById('studentLoginBtn');
-        studentLoginBtn.addEventListener('click', function() {
-            window.location.href = '/studentlogin.html'; // Redirect to student home page
-        });
-
-        // Redirect to enroll.html on faculty login
-        const facultyLoginBtn = document.getElementById('facultyLoginBtn');
-        facultyLoginBtn.addEventListener('click', function() {
-            window.location.href = '/enroll.html'; // Redirect to enroll page
-        });
-          // Redirect to enroll.html on faculty login
-          const signup = document.getElementById('signup');
-          signup.addEventListener('click', function() {
-            window.location.href = '/index.html'; // Redirect to enroll page
-        });
-
-        const login = document.getElementById('login');
-        login.addEventListener('click', function() {
-            window.location.href = '/enroll.html'; // Redirect to enroll page
-        });
-
-        // Redirect to studentHome.html on form submission
+        // Redirect to faculty home page on form submission
         const loginForm = document.getElementById('loginForm');
         loginForm.addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent the default form submission
+            event.preventDefault(); // Prevent default form submission
+            alert("Login Successful!"); // Simulate login success
             window.location.href = '/facultyHome.html'; // Redirect to the desired page
         });
     </script>
